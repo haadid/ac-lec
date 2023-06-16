@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acne Detection</title>
+    <style>
+        /* Tambahkan CSS sesuai kebutuhan Anda */
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h1>Acne Detection</h1>
+        <div class="camera-preview">
+            <video id="video-player" autoplay></video>
+        </div>
+        <div class="image-preview">
+            <input type="file" accept="image/*" @change="handleFileUpload">
+            <img v-if="previewImage" :src="previewImage" alt="Preview Image">
+        </div>
+        <button @click="capture">Capture</button>
+        <button @click="preview">Start Camera</button>
+        <button @click="upload">Predict</button>
+        <div class="result" v-if="numAcne !== null">
+            <p>Number of acne: {{ numAcne }}</p>
+            <p>Acne level: {{ acneLevel }}</p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
