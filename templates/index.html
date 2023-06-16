@@ -19,7 +19,8 @@
             <img v-if="previewImage" :src="previewImage" alt="Preview Image">
         </div>
         <button @click="capture">Capture</button>
-        <button @click="preview">Start Camera</button>
+        <button v-if="!showCamera" @click="toggleCamera">Turn On Camera</button>
+        <button v-else @click="toggleCamera">Turn Off Camera</button>
         <button @click="upload">Predict</button>
         <div class="result" v-if="numAcne !== null">
             <p>Number of acne: {{ numAcne }}</p>
@@ -29,6 +30,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="app.js"></script>
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
 </body>
 </html>
